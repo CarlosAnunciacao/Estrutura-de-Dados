@@ -1,0 +1,48 @@
+public class Racional {
+    private int numerador;
+    private int denominador;
+
+    public Racional(int numerador, int denominador) {
+        if (denominador == 0) {
+            throw new IllegalArgumentException("O denominador não pode ser zero.");
+        }
+        this.numerador = numerador;
+        this.denominador = denominador;
+        simplificar();
+    }
+
+    public Racional somar(Racional outro) {
+        int novoNumerador = (this.numerador * outro.denominador) + (outro.numerador * this.denominador);
+        int novoDenominador = this.denominador * outro.denominador;
+        return new Racional(novoNumerador, novoDenominador);
+    }
+
+    public Racional multiplicar(Racional outro) {
+        int novoNumerador = this.numerador * outro.numerador;
+        int novoDenominador = this.denominador * outro.denominador;
+        return new Racional(novoNumerador, novoDenominador);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Racional outro = (Racional) obj;
+        return this.numerador == outro.numerador && this.denominador == outro.denominador;
+    }
+
+    private void simplificar() {
+        int mdc = mdc(Math.abs(numerador), Math.abs(denominador));
+        numerador /= mdc;
+        denominador /= mdc;
+    }
+
+    private int mdc(int a, int b) {
+        return b == 0 ? a : mdc(b, a % b);
+    }
+
+    @Override
+    public String toString() {
+        return numerador + "/" + denominador;
+    }
+}

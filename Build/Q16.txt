@@ -1,0 +1,44 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DiarioAnotacoes {
+    public static class Anotacao {
+        private LocalDate data;
+        private String titulo;
+        private String conteudo;
+
+        public Anotacao(LocalDate data, String titulo, String conteudo) {
+            this.data = data;
+            this.titulo = titulo;
+            this.conteudo = conteudo;
+        }
+
+        @Override
+        public String toString() {
+            return "Data: " + data + "\nTítulo: " + titulo + "\nConteúdo: " + conteudo;
+        }
+    }
+
+    private List<Anotacao> anotacoes;
+
+    public DiarioAnotacoes() {
+        this.anotacoes = new ArrayList<>();
+    }
+
+    public void adicionarAnotacao(String titulo, String conteudo) {
+        anotacoes.add(new Anotacao(LocalDate.now(), titulo, conteudo));
+    }
+
+    public void listarAnotacoes() {
+        if (anotacoes.isEmpty()) {
+            System.out.println("O diário está vazio.");
+        } else {
+            for (Anotacao a : anotacoes) {
+                System.out.println("---");
+                System.out.println(a);
+            }
+            System.out.println("---");
+        }
+    }
+}

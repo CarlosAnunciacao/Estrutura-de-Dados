@@ -1,0 +1,47 @@
+import java.time.LocalTime;
+import java.util.PriorityQueue;
+
+public class FilaAtendimento {
+    public static class Paciente implements Comparable<Paciente> {
+        private String nome;
+        private int prioridade;
+        private LocalTime horarioChegada;
+
+        public Paciente(String nome, int prioridade, LocalTime horarioChegada) {
+            this.nome = nome;
+            this.prioridade = prioridade;
+            this.horarioChegada = horarioChegada;
+        }
+
+        @Override
+        public int compareTo(Paciente outro) {
+            if (this.prioridade != outro.prioridade) {
+                return Integer.compare(this.prioridade, outro.prioridade);
+            }
+            return this.horarioChegada.compareTo(outro.horarioChegada);
+        }
+
+        @Override
+        public String toString() {
+            return "Paciente: " + nome + ", Prioridade: " + prioridade + ", Chegada: " + horarioChegada;
+        }
+    }
+
+    private PriorityQueue<Paciente> fila;
+
+    public FilaAtendimento() {
+        this.fila = new PriorityQueue<>();
+    }
+
+    public void adicionarPaciente(String nome, int prioridade) {
+        fila.add(new Paciente(nome, prioridade, LocalTime.now()));
+    }
+
+    public Paciente proximoPaciente() {
+        return fila.poll();
+    }
+
+    public boolean estaVazia() {
+        return fila.isEmpty();
+    }
+}

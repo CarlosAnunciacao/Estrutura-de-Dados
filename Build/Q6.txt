@@ -1,0 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class AgendaTelefonica {
+    private Map<String, String> contatos;
+
+    public AgendaTelefonica() {
+        this.contatos = new HashMap<>();
+    }
+
+    public void adicionar(String nome, String telefone) {
+        contatos.put(nome, telefone);
+    }
+
+    public boolean excluir(String nome) {
+        return contatos.remove(nome) != null;
+    }
+
+    public boolean atualizar(String nome, String novoTelefone) {
+        if (contatos.containsKey(nome)) {
+            contatos.put(nome, novoTelefone);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean remover(String nome) {
+        return excluir(nome);
+    }
+}
