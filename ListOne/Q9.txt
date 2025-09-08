@@ -1,0 +1,33 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class PedidoRestaurante {
+    private String nomeCliente;
+    private Map<String, Integer> itensQuantidade;
+    private double valorTotal;
+
+    public PedidoRestaurante(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+        this.itensQuantidade = new HashMap<>();
+        this.valorTotal = 0.0;
+    }
+
+    public void adicionarItem(String item, int quantidade, double precoUnitario) {
+        if (quantidade > 0 && precoUnitario > 0) {
+            itensQuantidade.put(item, quantidade);
+            valorTotal += quantidade * precoUnitario;
+        }
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public Map<String, Integer> getItensQuantidade() {
+        return itensQuantidade;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+}

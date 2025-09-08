@@ -1,0 +1,62 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Estoque {
+    public static class Produto {
+        private String nome;
+        private String codigo;
+        private int quantidadeEmEstoque;
+        private double precoUnitario;
+
+        public Produto(String nome, String codigo, int quantidadeEmEstoque, double precoUnitario) {
+            this.nome = nome;
+            this.codigo = codigo;
+            this.quantidadeEmEstoque = quantidadeEmEstoque;
+            this.precoUnitario = precoUnitario;
+        }
+
+        public String getCodigo() {
+            return codigo;
+        }
+
+        public int getQuantidadeEmEstoque() {
+            return quantidadeEmEstoque;
+        }
+
+        public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+            this.quantidadeEmEstoque = quantidadeEmEstoque;
+        }
+
+        @Override
+        public String toString() {
+            return "Produto: " + nome + ", Código: " + codigo + ", Quantidade: " + quantidadeEmEstoque + ", Preço: R$" + precoUnitario;
+        }
+    }
+
+    private Map<String, Produto> produtos;
+
+    public Estoque() {
+        this.produtos = new HashMap<>();
+    }
+
+    public void adicionarProduto(Produto produto) {
+        produtos.put(produto.getCodigo(), produto);
+    }
+
+    public Produto buscarProduto(String codigo) {
+        return produtos.get(codigo);
+    }
+
+    public void atualizarQuantidade(String codigo, int novaQuantidade) {
+        Produto produto = produtos.get(codigo);
+        if (produto != null) {
+            produto.setQuantidadeEmEstoque(novaQuantidade);
+        }
+    }
+
+    public void listarProdutos() {
+        for (Produto p : produtos.values()) {
+            System.out.println(p);
+        }
+    }
+}
