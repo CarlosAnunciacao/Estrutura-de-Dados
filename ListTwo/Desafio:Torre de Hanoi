@@ -1,0 +1,13 @@
+public class TorreDeHanoi {
+
+    public static void torreDeHanoi(int n, char origem, char destino, char auxiliar) {
+        if (n == 1) {
+            System.out.println("Mover de " + origem + " para " + destino);
+            return;
+        }
+
+        torreDeHanoi(n - 1, origem, auxiliar, destino);
+        System.out.println("Mover de " + origem + " para " + destino);
+        torreDeHanoi(n - 1, auxiliar, destino, origem);
+    }
+}
