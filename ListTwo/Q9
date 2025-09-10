@@ -1,0 +1,25 @@
+public class Recursividade {
+    public static int potencia(int base, int expoente) {
+        if (expoente == 0) {
+            return 1;
+        }
+        if (expoente < 0) {
+            throw new IllegalArgumentException("Expoente deve ser não negativo.");
+        }
+        int resultado = base;
+        for (int i = 1; i < expoente; i++) {
+            resultado = somaMultiplicacao(resultado, base);
+        }
+        return resultado;
+    }
+
+    private static int somaMultiplicacao(int a, int b) {
+        if (b == 0) {
+            return 0;
+        }
+        if (b == 1) {
+            return a;
+        }
+        return a + somaMultiplicacao(a, b - 1);
+    }
+}
