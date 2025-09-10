@@ -1,0 +1,16 @@
+public class Recursividade {
+    public static boolean ehPalindromo(String str) {
+        String limpa = str.replaceAll("\\s", "").toLowerCase();
+        return ehPalindromoRecursivo(limpa, 0, limpa.length() - 1);
+    }
+
+    private static boolean ehPalindromoRecursivo(String str, int inicio, int fim) {
+        if (inicio >= fim) {
+            return true;
+        }
+        if (str.charAt(inicio) != str.charAt(fim)) {
+            return false;
+        }
+        return ehPalindromoRecursivo(str, inicio + 1, fim - 1);
+    }
+}
