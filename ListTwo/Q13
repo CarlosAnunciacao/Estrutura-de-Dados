@@ -1,0 +1,16 @@
+public class Recursividade {
+    public static int contaCaractere(String str, char c) {
+        return contaCaractereRecursivo(str, c, 0);
+    }
+
+    private static int contaCaractereRecursivo(String str, char c, int indice) {
+        if (indice >= str.length()) {
+            return 0;
+        }
+        int count = 0;
+        if (str.charAt(indice) == c) {
+            count = 1;
+        }
+        return count + contaCaractereRecursivo(str, c, indice + 1);
+    }
+}
