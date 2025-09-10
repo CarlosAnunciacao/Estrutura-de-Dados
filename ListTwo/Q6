@@ -1,0 +1,8 @@
+public class Recursividade {
+    public static void contagemRegressiva(int n) {
+        if (n >= 0) {
+            System.out.println(n);
+            contagemRegressiva(n - 1);
+        }
+    }
+}
