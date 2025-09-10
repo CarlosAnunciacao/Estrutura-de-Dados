@@ -1,0 +1,12 @@
+public class Recursividade {
+    public static int somaArray(int[] arr, int indice) {
+        if (indice < 0) {
+            return 0;
+        }
+        return arr[indice] + somaArray(arr, indice - 1);
+    }
+
+    public static int somaArray(int[] arr) {
+        return somaArray(arr, arr.length - 1);
+    }
+}
