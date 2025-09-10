@@ -1,0 +1,18 @@
+public class Recursividade {
+    public static int encontraMaiorElemento(int[] arr, int inicio, int fim) {
+        if (inicio == fim) {
+            return arr[inicio];
+        }
+        int meio = (inicio + fim) / 2;
+        int maiorEsquerda = encontraMaiorElemento(arr, inicio, meio);
+        int maiorDireita = encontraMaiorElemento(arr, meio + 1, fim);
+        return Math.max(maiorEsquerda, maiorDireita);
+    }
+
+    public static int encontraMaiorElemento(int[] arr) {
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("O array não pode ser vazio.");
+        }
+        return encontraMaiorElemento(arr, 0, arr.length - 1);
+    }
+}
