@@ -1,0 +1,15 @@
+public class Recursividade {
+    public static int calculaMMC(int a, int b) {
+        if (a <= 0 || b <= 0) {
+            throw new IllegalArgumentException("Os números devem ser positivos.");
+        }
+        return (a * b) / CalculaMDC(a, b);
+    }
+
+    private static int CalculaMDC(int m, int n) {
+        if (n == 0) {
+            return m;
+        }
+        return CalculaMDC(n, m % n);
+    }
+}
