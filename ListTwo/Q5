@@ -1,0 +1,8 @@
+public class Recursividade {
+    public static void imprimeNumeros(int n) {
+        if (n > 0) {
+            imprimeNumeros(n - 1);
+            System.out.println(n);
+        }
+    }
+}
