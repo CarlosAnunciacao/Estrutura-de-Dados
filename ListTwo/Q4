@@ -1,0 +1,8 @@
+public class Recursividade {
+    public static int somaAlgarismos(int numero) {
+        if (numero < 10) {
+            return numero;
+        }
+        return (numero % 10) + somaAlgarismos(numero / 10);
+    }
+}
